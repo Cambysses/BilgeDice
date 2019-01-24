@@ -25,7 +25,11 @@ def draw_board(rolled_dice, player):
     print("")
     print("Your dice:")
     draw_die(player.dice)
-    # print(f"Total: {score(dice)}\n")
+    print("")
+    print("Qualifiers:")
+    draw_die(player.qualifiers)
+    print("")
+    print(f"Total: {score(player.dice)}\n")
 
 
 def score(dice):
@@ -42,8 +46,8 @@ def pick_keepers(rolled_dice, player):
     dice_to_keep = dice_to_keep.split(",")
     dice_to_keep = [int(keeper) for keeper in dice_to_keep]
     for keeper in sorted(dice_to_keep, reverse=True):
-        player.add_die(rolled_dice[keeper])
-        rolled_dice.pop(keeper)
+        player.add_die(rolled_dice[keeper-1])
+        rolled_dice.pop(keeper-1)
 
 
 def main():
